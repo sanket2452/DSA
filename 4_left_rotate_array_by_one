@@ -1,0 +1,26 @@
+#include <bits/stdc++.h> 
+vector<int> rotateArray(vector<int>& arr, int n) {
+    // Write your code here.
+    /*this solution has TC of O(n) and SC of O(n)*/
+    /*queue<int> q;
+    for(int i=0;i<n;i++){
+        q.push(arr[i]);
+    }
+    int x=q.front();
+    q.pop();
+    q.push(x);
+    vector<int> ans;
+    while(!q.empty()){
+        int p=q.front();
+        ans.push_back(p);
+        q.pop();
+        
+
+    }
+    return ans;*/
+    /*optimal solution: TC O(n) SC O(1)  rotated within the array itself i.e. we are using space so SC O(n) ie extra space is O(1) but used us O(n)*/
+    for(int i=0;i<n-1;i++){
+        swap(arr[i],arr[i+1]);
+    }
+    return arr;
+}e next in
