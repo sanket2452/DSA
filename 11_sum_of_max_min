@@ -1,0 +1,18 @@
+#include <bits/stdc++.h> 
+/*TC O(n) SC O(1)*/
+int sumOfMaxMin(int arr[], int n){
+	// Write your code here.
+	int mini=INT_MAX;
+	int maxi=INT_MIN;
+	int i=0;
+	while(i!=n){
+		if(arr[i]>maxi){
+			maxi=arr[i];
+		}
+		if(arr[i]<mini){
+			mini=arr[i];
+		}
+		i++;
+	}
+	return maxi+mini;
+}
