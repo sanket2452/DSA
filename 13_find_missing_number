@@ -1,0 +1,14 @@
+brute force: compare each number from 1 to N with the array elements 
+             TC O(n*n) SC O(1)
+better:      using hashing. create an array of size N+1 and mark the i-th position as 1 if element is present in original array.
+             TC O(n) SC O(n)
+optimal solution: TC O(n) SC O(1)
+int missingNumber(vector<int>&a, int N) {
+    // Write your code here.
+    int sum=0;
+    for(int i=0;i<a.size();i++){
+        sum+=a[i];
+    }
+    int tsum=(N*(N+1))/2;
+    return tsum-sum;
+}
