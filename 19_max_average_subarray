@@ -1,0 +1,27 @@
+double findMaxAverage(vector<int>& nums, int k) {
+        //TLE 
+        int n=nums.size();
+        double maxi=0;
+        double sum=0;
+        /*for(int i=0;i<=n-k;i++){
+            sum=0;
+            x=0;
+            while(x<k){
+                sum+=nums[i+x];
+                x++;
+            }
+            sum=sum/x;
+            maxi=max(sum,maxi);
+        }*/
+
+//sliding window 
+        for(int i=0;i<k;i++){
+            sum+=nums[i];
+        }
+        maxi=sum/k;
+        for(int right=k;right<n;right++){
+            sum+=nums[right]-nums[right-k];
+            maxi=max(sum/k,maxi);
+        }
+        return maxi;
+    }
