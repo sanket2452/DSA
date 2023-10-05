@@ -1,0 +1,56 @@
+#include <bits/stdc++.h> 
+int getLongestSubarray(vector<int>& nums, int k){
+    // Write your code here
+    int n=nums.size();
+    /*int len=0;
+    
+    
+    for(int i=0;i<n;i++){
+        int s=0;
+        for(int j=i;j<n;j++){
+            s+=nums[j];
+            if(s==k) len=max(len,j-i+1);
+            
+        }
+    
+    }
+    return len;
+    */
+    
+    This solution is optimal if there are -ve numbers 
+    /*map<long long, int> preSumMap;
+    long long sum=0;
+    int maxLen=0;
+    for(int i=0;i<n;i++){
+        sum+=nums[i];
+        if(sum==k){
+            maxLen=max(maxLen,i+1);
+        }
+        long long rem=sum-k;
+        if(preSumMap.find(rem)!=preSumMap.end()){
+            int len=i-preSumMap[rem];
+            maxLen=max(maxLen, len);
+        }
+        if(preSumMap.find(sum)==preSumMap.end()){
+            preSumMap[sum]=i;
+        }
+    }
+    return maxLen;*/
+    
+    this solution is optimal only if there are 0 and +ve
+    /*int left=0, right=0;
+    long long sum=nums[0];
+    int maxLen=0;
+    while(right<n){
+        while(left<=right&&sum>k){
+            sum-=nums[left];
+            left++;
+        }
+        if(sum==k){
+            maxLen=max(maxLen, right-left+1);
+        }
+        right++;
+        if(right<n) sum+=nums[right];
+    }
+    return maxLen;*/
+}
