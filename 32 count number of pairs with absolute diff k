@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int countKDifference(vector<int>& nums, int k) {
+        int cnt=0, n=nums.size();
+        int i=0,j=0;
+        for(j=1;j<n;j++){
+            if(i<j){
+                if(abs(nums[i]-nums[j])==k) cnt++;
+            }
+            if(j==n-1){
+                i++;
+                j=i;
+            }
+        }
+        return cnt;
+    }
+};
