@@ -1,0 +1,56 @@
+class Solution {
+public:
+    int numberOfBeams(vector<string>& bank) {
+        vector<int> v;
+        for(auto it:bank){
+            int cnt=0;
+            for(auto c: it){
+                if(c=='1') cnt++;
+            }
+            if(cnt!=0)
+                v.push_back(cnt);
+            
+        }
+        if(bank.size()==1) return 0;
+        else if(v.size()==0||v.size()==1) return 0; 
+        int ans=0;
+        for(int i=0;i<v.size()-1;i++){
+            ans+=(v[i]*v[i+1]);
+        }
+        return ans;
+    }
+};
+___________________________________________________________________________________________________________________________________________________________________________________________________--
+
+
+class Solution {
+public:
+    int numberOfBeams(vector<string>& bank) 
+    {        
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+
+        if(bank.size() < 2)
+            return 0;
+
+        int solution = 0;
+        short beaconsInPrevRow = 0;
+        short beaconsInCurrentRow = 0;
+        for(size_t i = 0; i < bank.size(); ++i)
+        {
+            beaconsInCurrentRow = 0;
+
+            for(auto &it : bank[i])
+            {
+                if(it == '1')
+                {
+                    beaconsInCurrentRow++;
+                }
+            }
+            solution += beaconsInCurrentRow * beaconsInPrevRow;
+            beaconsInPrevRow = (beaconsInCurrentRow == 0) * beaconsInPrevRow + beaconsInCurrentRow;
+        }
+
+        return solution;
+    }
+};
