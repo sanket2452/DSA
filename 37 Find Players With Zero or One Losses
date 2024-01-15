@@ -1,0 +1,53 @@
+class Solution {
+public:
+    vector<vector<int>> findWinners(vector<vector<int>>& matches) {
+        map<int, int> win;
+        map<int, int> lose;
+        for(auto it: matches){
+            win[it[0]]++;
+            lose[it[1]]++; 
+        }
+        vector<vector<int>> ans;
+        vector<int> in1;
+        vector<int> in2;
+        
+        for(auto it: win){
+            //cout<<it.first<<" "<<lose[it.first]<<endl;
+            if(it.second>0 && lose[it.first]==0) in1.push_back(it.first);
+        }
+        for(auto it: lose){
+            if(it.second==1) in2.push_back(it.first);
+        }
+        ans.push_back(in1);
+        ans.push_back(in2);
+        return ans;
+
+    }
+};
+
+___________________________________________________________________________________________________________________________________________
+
+class Solution {
+public:
+    Solution() {
+        memset(loss, -1, sizeof loss);
+    }
+    vector<vector<int>> findWinners(vector<vector<int>>& matches) {
+        vector<vector<int>> res(2, vector<int>());
+        res[0].reserve(1024), res[1].reserve(1024);
+        for (const auto& match : matches) {
+            int winner = match[0], loser = match[1];
+            if (loss[winner] == -1) loss[winner] = 0;
+            if (loss[loser] == -1) loss[loser] = 1;
+            else ++loss[loser];
+        }
+        for (int player = 1; player < N; ++player) {
+            if (loss[player] == 0) res[0].emplace_back(player);
+            else if (loss[player] == 1) res[1].emplace_back(player);
+        }
+        return res;
+    }
+private:
+    static const int N = 1e5 + 1;
+    int loss[N];
+};
