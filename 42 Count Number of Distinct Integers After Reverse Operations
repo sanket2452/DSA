@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int countDistinctIntegers(vector<int>& nums) {
+        unordered_set<int> st;
+        for(auto it: nums){
+            if(it<10){ 
+                st.insert(it);
+                cout<<it<<endl;
+            }
+            else{
+                st.insert(it);
+                string s=to_string(it);
+                reverse(s.begin(), s.end());
+                int x=stoi(s);
+                cout<<x<<endl;
+                st.insert(x);
+            }
+        }
+        return st.size();
+    }
+};
